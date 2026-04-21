@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // 라우터 설정
-const AuthRouter = require("./router/auth.js");
+const AuthRouter = require("./router/auth.router.js");
 
 app.use("/auth", AuthRouter);
 

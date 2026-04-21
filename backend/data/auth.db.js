@@ -1,4 +1,5 @@
-import { dbPlay } from "../utils/db.js";
+import { dbPlay } from "../utils/db.utils.js";
+import { config } from "../config/env.config.js";
 
 // 로그인 db조회
 const login = async (student_id, password) => {

@@ -1,15 +1,11 @@
 import mysql from "mysql2/promise";
+import { config } from "./env.config.js";
 
-const pool = mysql.createPool({
-  // host: "localhost",
-  // user:
-  // password:
-  // database:
+export const pool = mysql.createPool({
+  host: config.database.host,
+  user: config.database.user,
+  password: config.database.password,
+  database: config.database.database,
   waitForConnections: true,
   connectionLimit: 10,
-});
-
-db.connect((err) => {
-  if (err) console.log("db연결 실패");
-  else console.log("db연결 성공");
 });
