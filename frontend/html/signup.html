@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <style></style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Signup</title>
+  </head>
+  <body>
+    <!-- 회원가입 전체 박스 -->
+    <div class="signup_box">
+      <h2 class="signup_text">회원가입</h2>
+      <!-- 회원가입 form -->
+      <form action="post" class="signup_form">
+        <!-- 학번 -->
+        <input
+          placeholder="학번"
+          type="text"
+          id="student_id"
+          name="student_id"
+        />
+        <!-- 이름 -->
+        <input placeholder="이름" type="text" name="name" id="signup_name" />
+        <!-- 비밀번호 -->
+        <input
+          placeholder="비밀번호"
+          type="password"
+          id="signup_password"
+          name="password"
+        />
+        <!-- 비밀번호 확인 -->
+        <input
+          type="password"
+          placeholder="비밀번호 확인"
+          id="password_check"
+          name="password_check"
+        />
+        <!-- 회원가입 버튼 -->
+        <button class="signup_btn">회원가입</button>
+      </form>
+      <a href="#">로그인</a>
+    </div>
+  </body>
+</html>
