@@ -1,0 +1,279 @@
+/* 기본 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: #0d0d0d;
+    color: #ececec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative; /* 우상단 고정을 위한 기준점 */
+}
+
+/* ==========================================
+   ⭐ [NEW] 오른쪽 상단 프로필 및 드롭다운 디자인
+============================================= */
+.top-right-profile {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 999;
+}
+
+/* 동그란 아바타 버튼 */
+.profile-avatar-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #171717;
+    border: 1px solid #2f2f2f;
+    color: #b4b4b4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.profile-avatar-btn:hover {
+    background-color: #212121;
+    border-color: #424242;
+    color: #ffffff;
+}
+
+/* 아래로 떨어지는 미니 메뉴 전체 상자 */
+.profile-dropdown-menu {
+    position: absolute;
+    top: 48px; /* 버튼 아래 간격 */
+    right: 0;
+    width: 180px;
+    background-color: #171717;
+    border: 1px solid #2f2f2f;
+    border-radius: 12px;
+    padding: 6px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    display: none; /* 기본 상태는 숨김 */
+    flex-direction: column;
+    gap: 2px;
+    animation: dropdownFade 0.2s ease-out;
+}
+
+/* 클래스 토글용 (.show 가 붙으면 메뉴가 열림) */
+.profile-dropdown-menu.show {
+    display: flex;
+}
+
+.dropdown-header {
+    font-size: 11px;
+    font-weight: 600;
+    color: #676767;
+    padding: 8px 12px 4px 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* 메뉴 안의 개별 버튼들 */
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 10px 12px;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    color: #ececec;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-item svg {
+    color: #b4b4b4;
+    transition: color 0.2s;
+}
+
+/* 일반 아이템 호버 */
+.dropdown-item:not(.logout-item):hover {
+    background-color: #212121;
+}
+.dropdown-item:not(.logout-item):hover svg {
+    color: #ffffff;
+}
+
+/* 경계선 */
+.dropdown-divider {
+    border: 0;
+    height: 1px;
+    background-color: #2f2f2f;
+    margin: 4px 0;
+}
+
+/* 로그아웃 전용 호버 효과 */
+.dropdown-item.logout-item:hover {
+    background-color: #2a1a1a;
+    color: #ff8888;
+}
+.dropdown-item.logout-item:hover svg {
+    color: #ff8888;
+}
+
+@keyframes dropdownFade {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================
+   기존 로그인 폼 레이아웃 (유지)
+============================================= */
+.auth-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 440px;
+    padding: 20px;
+}
+
+.brand-logo {
+    color: #10a37f;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.auth-container {
+    width: 100%;
+    background-color: #171717;
+    border: 1px solid #2f2f2f;
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.auth-subtitle {
+    font-size: 14px;
+    color: #b4b4b4;
+    margin-bottom: 32px;
+}
+
+.input-wrapper {
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: #212121;
+    border: 1px solid #3c3c3c;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.input-wrapper input:focus {
+    border-color: #10a37f;
+    background-color: #262626;
+}
+
+.input-wrapper input::placeholder {
+    color: #8e8e8e;
+}
+
+.btn-continue {
+    width: 100%;
+    padding: 14px;
+    background-color: #10a37f;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    margin-top: 16px;
+    margin-bottom: 24px;
+}
+
+.btn-continue:hover {
+    background-color: #1a7f64;
+}
+
+.btn-continue:active {
+    transform: scale(0.98);
+}
+
+.auth-footer {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #8e8e8e;
+    border-top: 1px solid #2f2f2f;
+    padding-top: 24px;
+}
+
+.auth-link {
+    color: #10a37f;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.auth-link:hover {
+    color: #1a7f64;
+    text-decoration: underline;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    padding: 12px 24px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.notification.success { background-color: #10a37f; }
+.notification.error { background-color: #ef4444; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
